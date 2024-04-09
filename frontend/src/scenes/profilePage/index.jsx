@@ -30,7 +30,8 @@ const ProfilePage = () => {
   if (!user) return null;
 
   return (
-    <Box>
+    <div>
+      <Box>
       <Navbar />
       <Box
         width="100%"
@@ -60,6 +61,7 @@ const ProfilePage = () => {
         }
       </Box>
     </Box>
+    </div>
   );
 };
 

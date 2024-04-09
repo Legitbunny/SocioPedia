@@ -9,7 +9,8 @@ const AdvertWidget = () => {
   const medium = palette.neutral.medium;
 
   return (
-    <WidgetWrapper>
+    <div>
+      <WidgetWrapper>
       <FlexBetween>
         <Typography color={dark} variant="h5" fontWeight="500">
           Sponsored
@@ -32,6 +33,7 @@ const AdvertWidget = () => {
         is exfoliating skin and shining like light.
       </Typography>
     </WidgetWrapper>
+    </div>
   );
 };
 

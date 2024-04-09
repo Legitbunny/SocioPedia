@@ -14,7 +14,7 @@ function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
 
   return (
-    <>
+    <div>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
           <CssBaseline />
@@ -31,7 +31,7 @@ function App() {
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 

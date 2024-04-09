@@ -13,7 +13,8 @@ const HomePage = () => {
   console.log("Homepage");
 
   return (
-    <Box>
+    <div>
+      <Box>
       <Navbar />
       <Box
         width="100%"
@@ -41,6 +42,7 @@ const HomePage = () => {
         )}
       </Box>
     </Box>
+    </div>
   );
 };
 

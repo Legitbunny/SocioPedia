@@ -9,7 +9,7 @@ const FriendListWidget = ({ userId }) => {
   const dispatch = useDispatch();
   const { palette } = useTheme();
   const token = useSelector((state) => state.token);
-  const friends = useSelector((state) => state.user.friends);
+  const friends = useSelector((state) => state.user.friends)||[];
 
   const getFriends = async () => {
     const response = await fetch(
@@ -25,10 +25,11 @@ const FriendListWidget = ({ userId }) => {
 
   useEffect(() => {
     getFriends();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [userId, token, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <WidgetWrapper>
+    <div>
+      <WidgetWrapper>
       <Typography
         color={palette.neutral.dark}
         variant="h5"
@@ -38,7 +39,7 @@ const FriendListWidget = ({ userId }) => {
         Friend List
       </Typography>
       <Box display="flex" flexDirection="column" gap="1.5rem">
-        {friends.length > 0 ? 
+        {friends.length>0 ? 
         (friends.map((friend) => (
           <Friend
             key={friend._id}
@@ -50,6 +51,7 @@ const FriendListWidget = ({ userId }) => {
         ))) : (<div>Loading...</div>)}
       </Box>
     </WidgetWrapper>
+    </div>
   );
 };
 

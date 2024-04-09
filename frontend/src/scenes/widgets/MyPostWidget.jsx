@@ -58,7 +58,8 @@ const MyPostWidget = ({ picturePath }) => {
   };
 
   return (
-    <WidgetWrapper>
+    <div>
+      <WidgetWrapper>
       <FlexBetween gap="1.5rem">
         <UserImage image={picturePath} />
         <InputBase
@@ -167,6 +168,7 @@ const MyPostWidget = ({ picturePath }) => {
         </Button>
       </FlexBetween>
     </WidgetWrapper>
+    </div>
   );
 };
 

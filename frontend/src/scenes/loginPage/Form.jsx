@@ -103,7 +103,8 @@ const Form = () => {
   };
 
   return (
-    <Formik
+    <div>
+      <Formik
       onSubmit={handleFormSubmit}
       initialValues={isLogin ? initialValuesLogin : initialValuesRegister}
       validationSchema={isLogin ? loginSchema : registerSchema}
@@ -269,6 +270,7 @@ const Form = () => {
         </form>
       )}
     </Formik>
+    </div>
   );
 };
 

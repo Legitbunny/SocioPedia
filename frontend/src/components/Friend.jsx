@@ -38,11 +38,12 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
       }
     );
     const data = await response.json();
-    dispatch(setFriends({ friends: data }));
+    dispatch(setFriends({ friends: data}));
   };
 
   return (
-    <FlexBetween>
+    <div>
+      <FlexBetween>
       <FlexBetween gap="1rem">
         <UserImage image={userPicturePath} size="55px" />
         <Box
@@ -80,6 +81,7 @@ const Friend = ({ friendId, name, subtitle, userPicturePath }) => {
         )}
       </IconButton>
     </FlexBetween>
+    </div>
   );
 };
 
