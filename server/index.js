@@ -22,12 +22,18 @@ const {users, posts } = require('./data/index.js');
 
 dotenv.config();
 const app = express();
+app.use(cors(
+    {
+        origin: [""],
+        methods: ["GET", "POST"],
+        credentials:true,
+    }
+))
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
 app.use(morgan("comman"));
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(cors());
 // It sets the directory of where we keep our asset
 app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
 
@@ -42,6 +48,8 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({storage});
+app.get('/', (req, res)=>{
+    res.json("success");})
 
 //ROUTES WITH FILES - whenever this route will be hit upload will act as a middlware
 // will upload images to public/assets folder before registering (saving into DB)
