@@ -8,7 +8,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
 const { fileURLToPath } =  require("url");
-const {register} = require('./controllers/auth.js');
+const {register} = require('./controllers/Auth.js');
 const authRoutes  = require("./routes/auth.js");
 const usersRoutes = require("./routes/users.js");
 const postsRoutes = require("./routes/posts.js");
@@ -17,18 +17,14 @@ const { createPost } = require('./controllers/Posts.js');
 const User = require('./models/User.js');
 const Post = require('./models/Post.js');
 const {users, posts } = require('./data/index.js');
+const corsOptions = require('./config/corsOptions.js')
 
 // CONFIGURATIONS
 
 dotenv.config();
 const app = express();
-app.use(cors(
-    {
-        origin: [""],
-        methods: ["GET", "POST"],
-        credentials:true,
-    }
-))
+app.use(cors(corsOptions));
+
 app.use(express.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: 'cross-origin' }));
@@ -48,8 +44,9 @@ const storage = multer.diskStorage({
     }
 });
 const upload = multer({storage});
-app.get('/', (req, res)=>{
-    res.json("success");})
+app.get('/',(req,res)=>{
+    res.json("Running");
+});
 
 //ROUTES WITH FILES - whenever this route will be hit upload will act as a middlware
 // will upload images to public/assets folder before registering (saving into DB)
